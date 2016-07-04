@@ -31,7 +31,7 @@ PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/$(PKG_NAME)
+define Package/bitcoind
 	SECTION:=utils
 	CATEGORY:=Utilities
 	TITLE:=Bitcoin full node
@@ -41,11 +41,11 @@ define Package/$(PKG_NAME)
 	DEPENDS += +libopenssl +libssp +libstdcpp
 endef
 
-define Package/$(PKG_NAME)/description
+define Package/bitcoind/description
 Bitcoind is a bitcoin full node
 endef
 
-define Package/$(PKG_NAME)/config
+define Package/bitcoind/config
 	menu "Configuration"
 	depends on PACKAGE_bitcoind
 	source "$(SOURCE)/Config.in"
@@ -65,7 +65,7 @@ define Build/Compile
 	$(call Build/Compile/Default)
 endef
 
-define Package/$(PKG_NAME)/install
+define Package/bitcoind/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_DIR) $(1)/etc/config
